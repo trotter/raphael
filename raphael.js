@@ -1730,15 +1730,15 @@ Raphael = (function () {
             otherSvg.type = "svg";
             group.type = "g";
             group.push = function (child) {
-              otherSvg.node[appendChild](child.node);
+                otherSvg.node[appendChild](child.node);
             }
             group.node.oldSetAttribute = group.node[setAttribute];
             group.node[setAttribute] = function(attr, val) {
-              if (attr === 'x' || attr === 'y') {
-                otherSvg.node.setAttribute(attr, val);
-              } else {
-                this.oldSetAttribute(attr, val);
-              }
+                if (attr === 'x' || attr === 'y') {
+                    otherSvg.node.setAttribute(attr, val);
+                } else {
+                    this.oldSetAttribute(attr, val);
+                }
             }
             return group;
         };
